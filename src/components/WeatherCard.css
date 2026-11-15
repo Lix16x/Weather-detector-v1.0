@@ -35,10 +35,10 @@
   color: #334155;
 }
 
-.weather-condition {
-  margin: 0.15rem 0 0;
-  font-size: 1.1rem;
-  color: #334155;
+.weather-meta {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: #64748b;
 }
 
 .weather-details {

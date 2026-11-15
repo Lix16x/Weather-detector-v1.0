@@ -1,12 +1,13 @@
 # Weather Detector
 
-React + Vite web app that detects your location (or lets you search manually) and shows current weather conditions using Open-Meteo APIs (no API key required).
+React + Vite web app that detects your location (or lets you search manually) and shows current weather plus a 7-day forecast using Open-Meteo APIs (no API key required).
 
 ## Features
-- Auto-detect location via browser Geolocation on load and via **Use my current location**.
-- Manual location fallback: search by city name or enter coordinates as `lat, lon` (Open-Meteo Geocoding).
-- Current conditions: temperature, feels like, condition, humidity, wind speed, and location/time.
-- Loading, success, and error states with retry.
+- **Auto-detect:** Uses browser Geolocation on load and via **Use my current location**.
+- **Manual search:** Search by city name or enter coordinates as `lat, lon` (Open-Meteo Geocoding) — works when geolocation is unavailable.
+- **Current conditions:** Temperature, feels like, condition, humidity, wind (speed/direction), precipitation, pressure, and location/time.
+- **7-day forecast:** Daily high/low, condition, and precipitation probability.
+- **UX:** Loading, success, and actionable error states with retry; responsive layout.
 
 ## Requirements
 - Node.js 18+ and npm

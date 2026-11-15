@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import WeatherCard from './components/WeatherCard'
+import Forecast from './components/Forecast'
 import { getCurrentPosition } from './services/geolocation'
-import { fetchCurrentWeather } from './services/weather'
+import { fetchWeather } from './services/weather'
 import { formatLocationLabel, parseCoordinates, searchLocations } from './services/geocoding'
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     setError('')
     setWeather(null)
     try {
-      const data = await fetchCurrentWeather(latitude, longitude, locationLabel)
+      const data = await fetchWeather(latitude, longitude, locationLabel)
       setWeather(data)
       setStatus('success')
     } catch (err) {
@@ -38,7 +39,7 @@ function App() {
     setWeather(null)
     try {
       const coords = await getCurrentPosition()
-      const data = await fetchCurrentWeather(coords.latitude, coords.longitude, 'Your location')
+      const data = await fetchWeather(coords.latitude, coords.longitude, 'Your location')
       setWeather(data)
       setStatus('success')
     } catch (err) {
@@ -97,7 +98,7 @@ function App() {
       <div className="container">
         <header className="header">
           <h1>Weather Detector</h1>
-          <p className="subtitle">Detect your location automatically or search by city to see current conditions.</p>
+          <p className="subtitle">Detect your location automatically or search by city to see current conditions and 7-day forecast.</p>
         </header>
 
         <section className="search-panel" aria-label="Manual location search">
@@ -156,7 +157,12 @@ function App() {
           </div>
         )}
 
-        {status === 'success' && weather && <WeatherCard weather={weather} />}
+        {status === 'success' && weather && (
+          <>
+            <WeatherCard weather={weather} />
+            <Forecast days={weather.daily} units={weather.dailyUnits} />
+          </>
+        )}
 
         <footer className="footer">
           <p>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>. Geocoding by <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank" rel="noreferrer">Open-Meteo Geocoding</a>.</p>
