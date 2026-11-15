@@ -1,12 +1,19 @@
 .forecast {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   text-align: left;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 20px;
+  padding: 1.1rem 1.1rem 1.2rem;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.07);
+  backdrop-filter: blur(6px);
 }
 
 .forecast-title {
-  margin: 0 0 0.75rem;
-  font-size: 1.1rem;
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
   color: #0f172a;
+  letter-spacing: -0.01em;
 }
 
 .forecast-list {
@@ -14,40 +21,54 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.7rem;
 }
 
 .forecast-item {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.75rem;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  border-radius: 14px;
+  padding: 0.8rem 0.75rem;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.forecast-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
 }
 
 .forecast-day {
-  font-weight: 600;
+  font-weight: 700;
   color: #0f172a;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .forecast-icon {
-  font-size: 1.6rem;
-  margin: 0.25rem 0;
+  font-size: 1.7rem;
+  margin: 0.3rem 0 0.2rem;
 }
 
 .forecast-temps {
   display: flex;
   gap: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.98rem;
 }
 
 .t-max { color: #0f172a; }
 .t-min { color: #64748b; }
 
 .forecast-rain {
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
   color: #475569;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .forecast-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
